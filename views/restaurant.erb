@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-sm-9">
+    <h1><%= @restaurant[:name] %></h1>
+    <p><%= @restaurant[:description] %></p>
+    <h3 class="mt-5">Comments</h3>
+    <% for comment in @comments %>
+    <% user = @users_table.where(:id => rsvp[:user_id]).to_a[0] %>
+      <div class="media mt-3">
+        <% if comment[:recommended] %>
+          <i class="fas fa-thumbs-up fa-3x"></i>
+        <% else %>
+          <i class="fas fa-thumbs-down fa-3x"></i>
+        <% end %>
+        <div class="media-body ml-3">
+          <h5 class="mt-0"><%= comment[:name] %></h5>
+          <%= comment[:comments] %>
+        </div>
+      </div>
+    <% end %>
+    <p class="mt-5"><a href="/restaurants/<%= @restaurant[:id] %>/comments/new" class="btn btn-primary">Write Down Your Comments!</a></p>
+  </div>
+  <div class="col-sm-3">
+    <h3>Location</h3>
+    <p><%= @restaurant[:location] %></p>
+    <h3>How many recommendations?</h3>
+    <p><%= @count %></p>
+  </div>
+</div>

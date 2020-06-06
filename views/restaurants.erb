@@ -1,0 +1,6 @@
+<h1>Restaurant List</h1>
+<ul class="list-unstyled">
+    <% for restaurant in @restaurants %>
+        <li><a href="restaurants/<%= restaurant[:id] %>"><%= restaurant[:name] %></a></li>
+    <% end %>
+</ul>
